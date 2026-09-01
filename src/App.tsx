@@ -60,7 +60,7 @@ function App() {
           </div>
         </div>
 
-        <div className="border-t border-sky-950/20 bg-brand-blue-deep">
+        <div className="bg-brand-blue-deep">
           <div className="page-width">
             <nav
               className="flex min-h-14 flex-wrap items-center justify-start gap-5"
@@ -79,10 +79,7 @@ function App() {
           </div>
         </div>
       </header>
-
-      <main className="page-width py-12 md:py-14">
-        {currentPage === "HOME" ? <Home /> : <></>}
-      </main>
+      <main>{currentPage === "HOME" ? <Home /> : <></>}</main>
     </div>
   );
 }
