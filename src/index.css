@@ -41,6 +41,11 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
+  --color-brand-background: #f5f3ee;
+  --color-brand-blue: #003c71;
+  --color-brand-blue-light: #77d5ea;
+  --color-brand-blue-deep: #0d2f4d;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -48,7 +53,7 @@
 }
 
 /* --------------------------------------------------
-   LEASE-INSPIRED LIGHT THEME
+   LIGHT THEME
    -------------------------------------------------- */
 
 :root {
@@ -60,7 +65,7 @@
   --foreground: #1d1d1b;
 
   /* Brand */
-  --primary: #0066cc;
+  --primary: #003c71;
   --primary-foreground: #ffffff;
 
   /* Cards */
@@ -73,7 +78,7 @@
 
   /* Secondary actions */
   --secondary: #e8f1fa;
-  --secondary-foreground: #003078;
+  --secondary-foreground: #002443;
 
   /* Muted surfaces */
   --muted: #f3f7fb;
@@ -81,22 +86,22 @@
 
   /* Hover / selected states */
   --accent: #e8f1fa;
-  --accent-foreground: #003078;
+  --accent-foreground: #002443;
 
   /* Destructive */
   --destructive: #d4351c;
   --destructive-foreground: #ffffff;
 
   /* Borders & inputs */
-  --border: #b1b4b6;
+  --border: #77d5ea;
   --input: #b1b4b6;
 
   /* Keyboard focus */
-  --ring: #0066cc;
+  --ring: #003c71;
 
   /* Charts */
-  --chart-1: #0066cc;
-  --chart-2: #003078;
+  --chart-1: #003c71;
+  --chart-2: #002443;
   --chart-3: #1d70b8;
   --chart-4: #5694ca;
   --chart-5: #74a8d3;
@@ -149,7 +154,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50;
   }
 
   html {
@@ -158,9 +163,6 @@
 
   body {
     @apply bg-background text-foreground font-sans;
-    margin: 0;
-    min-width: 320px;
-    line-height: 1.5;
   }
 
   button,
@@ -171,13 +173,7 @@
   }
 
   a {
-    color: var(--primary);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  a:hover {
-    color: #004c99;
+    color: inherit;
   }
 
   a:focus-visible,
