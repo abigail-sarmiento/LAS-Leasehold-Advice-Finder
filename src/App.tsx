@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import Home from "./pages/Home";
 import HelpFinder from "./pages/HelpFinder";
+import GuidedQuestions from "./pages/GuidedQuestions";
 
 type Page = "HOME" | "HELP_FINDER" | "GUIDED_QUESTIONS";
 
@@ -18,7 +19,7 @@ const navItems = [
 ];
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>("HOME");
+  const [currentPage, setCurrentPage] = useState<Page>("GUIDED_QUESTIONS");
 
   return (
     <div className="min-h-screen bg-brand-background">
@@ -83,6 +84,7 @@ function App() {
       <main>
         {currentPage === "HOME" && <Home />}
         {currentPage === "HELP_FINDER" && <HelpFinder />}
+        {currentPage === "GUIDED_QUESTIONS" && <GuidedQuestions />}
       </main>
     </div>
   );
