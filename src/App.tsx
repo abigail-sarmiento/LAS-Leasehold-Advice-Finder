@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import Home from "./pages/Home";
+import HelpFinder from "./pages/HelpFinder";
+
+type Page = "HOME" | "HELP_FINDER" | "GUIDED_QUESTIONS";
 
 const navItems = [
   "Leasehold essentials",
@@ -15,9 +18,7 @@ const navItems = [
 ];
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<"HOME" | "HELP_FINDER">(
-    "HOME",
-  );
+  const [currentPage, setCurrentPage] = useState<Page>("HOME");
 
   return (
     <div className="min-h-screen bg-brand-background">
@@ -79,7 +80,10 @@ function App() {
           </div>
         </div>
       </header>
-      <main>{currentPage === "HOME" ? <Home /> : <></>}</main>
+      <main>
+        {currentPage === "HOME" && <Home />}
+        {currentPage === "HELP_FINDER" && <HelpFinder />}
+      </main>
     </div>
   );
 }

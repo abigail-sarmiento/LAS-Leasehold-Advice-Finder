@@ -7,7 +7,7 @@ function Home() {
     <section>
       <div className="py-12 md:py-14 bg-brand-blue-light">
         <div className="flex flex-col items-center page-width gap-12">
-          <h1 className="text-5xl text-center font-sans font-bold">
+          <h1 className="max-w-3xl text-5xl text-center font-sans font-bold">
             Get free, government funded advice for a problem with your leasehold
             property
           </h1>
