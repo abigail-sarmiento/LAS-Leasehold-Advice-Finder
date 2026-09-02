@@ -149,9 +149,9 @@ This prototype demonstrates how a user could be guided towards the right informa
 It uses a modern frontend stack including React, TypeScript, TailwindCSS, shadcn/ui and the Gemini API, with a structure that I believe an engineering team could build upon and maintain. 
 
 Overall, it is a solid first iteration. However, there are some changes I would request before merging:
-- **Features (Results): **The categorisation is useful, but the results could make better use of the context gathered from the user to provide a more relevant and actionable next step. An LLM backed by curated LAS content could be explored here.
+- **Features (Results):** The categorisation is useful, but the results could make better use of the context gathered from the user to provide a more relevant and actionable next step. An LLM backed by curated LAS content could be explored here.
 - **UI: **Establish a consistent design system for colours, typography, spacing and interactive states
 -** Testing:** Test coverage should be expanded to include component, integration, API and E2E tests, alongside performance, SEO and cross-browser testing. 
-- **Accessibility: **Further manual testing is needed, particularly for keyboard navigation, focus order and visibility, browser zoom, responsive behaviour and screen reader compatibility.
+- **Accessibility:** Further manual testing is needed, particularly for keyboard navigation, focus order and visibility, browser zoom, responsive behaviour and screen reader compatibility.
 - **Privacy and security handling:** Consider what authentication and storage options will be required in the future, as well as validating and sanitising API inputs/responses.
 - **Code quality:** I would do a final review of naming, code structure and loading/error handling.
