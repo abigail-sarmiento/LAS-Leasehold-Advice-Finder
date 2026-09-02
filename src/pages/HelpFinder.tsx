@@ -1,11 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Textarea } from "@/components/ui/textarea";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupTextarea,
+} from "@/components/ui/input-group";
+import { Spinner } from "@/components/ui/spinner";
 import SituationCard from "../components/SituationCard";
 import { ArrowRight } from "lucide-react";
 import { situationItems } from "../data/situations";
 import type { Category } from "../types/categories";
+import { classifySituation } from "../services/helpFinderClassifier";
+import { useState } from "react";
 
 type SituationInputMethod = "choose-situation" | "describe-situation";
 
@@ -30,6 +37,8 @@ type HelpFinderProps = {
 function HelpFinder({ value, onChange, onContinue }: HelpFinderProps) {
   const { inputMethod, selectedSituation, situationInput } = value;
 
+  const [isClassifying, setIsClassifying] = useState(false);
+
   const handleSituationSelect = (id: string) => {
     onChange({
       ...value,
@@ -37,8 +46,24 @@ function HelpFinder({ value, onChange, onContinue }: HelpFinderProps) {
     });
   };
 
-  const selectedCategory: Category =
-    (selectedSituation as Category) || "leaseholdEssentials";
+  const handleContinue = async () => {
+    if (inputMethod === "describe-situation") {
+      setIsClassifying(true);
+
+      try {
+        const result = await classifySituation(situationInput);
+
+        onContinue(result.category);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsClassifying(false);
+      }
+    } else {
+      const category = (selectedSituation as Category) || "leaseholdEssentials";
+      onContinue(category);
+    }
+  };
 
   return (
     <section>
@@ -96,17 +121,23 @@ function HelpFinder({ value, onChange, onContinue }: HelpFinderProps) {
               </p>
               <div className="w-full">
                 {inputMethod === "describe-situation" && (
-                  <Textarea
-                    placeholder="What is your situation?"
-                    value={situationInput}
-                    onChange={(event) =>
-                      onChange({
-                        ...value,
-                        situationInput: event.target.value,
-                      })
-                    }
-                    className="w-full min-w-0 mt-5 rounded rounded-2xl font-normal"
-                  />
+                  <InputGroup className="mt-5 rounded rounded-2xl font-normal">
+                    <InputGroupTextarea
+                      placeholder="What is your situation?"
+                      value={situationInput}
+                      onChange={(event) =>
+                        onChange({
+                          ...value,
+                          situationInput: event.target.value,
+                        })
+                      }
+                    />
+                    {isClassifying && (
+                      <InputGroupAddon align="block-end">
+                        <Spinner /> Classifying...
+                      </InputGroupAddon>
+                    )}
+                  </InputGroup>
                 )}
               </div>
             </div>
@@ -115,9 +146,10 @@ function HelpFinder({ value, onChange, onContinue }: HelpFinderProps) {
         <Button
           disabled={
             (inputMethod === "choose-situation" && !selectedSituation) ||
-            (inputMethod === "describe-situation" && !situationInput.trim())
+            (inputMethod === "describe-situation" && !situationInput.trim()) ||
+            (inputMethod === "describe-situation" && isClassifying)
           }
-          onClick={() => onContinue(selectedCategory)}
+          onClick={handleContinue}
           className="h-11 px-6 gap-2"
         >
           Continue
