@@ -3,10 +3,10 @@ import { BookOpenText, Form, MessageCircleMore } from "lucide-react";
 import HowItWorksStep from "../components/HowItWorksStep";
 
 type HomeProps = {
-  onClickGetStarted: () => void;
+  onClickGetAdvice: () => void;
 };
 
-function Home({ onClickGetStarted }: HomeProps) {
+function Home({ onClickGetAdvice }: HomeProps) {
   return (
     <section>
       <div className="py-12 md:py-14 bg-brand-blue-light">
@@ -19,9 +19,9 @@ function Home({ onClickGetStarted }: HomeProps) {
             type="button"
             size="lg"
             className="w-fit px-6 py-6 rounded text-xl font-bold"
-            onClick={onClickGetStarted}
+            onClick={onClickGetAdvice}
           >
-            Get started
+            Get advice
           </Button>
         </div>
       </div>

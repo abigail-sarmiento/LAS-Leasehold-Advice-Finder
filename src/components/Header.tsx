@@ -4,7 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import HeaderNavMenu from "./HeaderNavMenu";
 
-function Header() {
+type HeaderProps = {
+  onClickGetAdvice: () => void;
+};
+
+function Header({ onClickGetAdvice }: HeaderProps) {
   return (
     <>
       <div className="page-width flex min-h-24 items-center justify-between gap-4 py-2">
@@ -17,7 +21,7 @@ function Header() {
         </a>
 
         <div className="flex gap-3">
-          <form className="flex overflow-hidden rounded border" role="search">
+          <form className="flex overflow-hidden rounded" role="search">
             <label htmlFor="site-search" className="sr-only">
               Search the site
             </label>
@@ -30,17 +34,20 @@ function Header() {
             />
             <Button
               type="submit"
+              variant="secondary"
               aria-label="Submit search"
-              className="h-full w-10 rounded-l-none rounded-r border-0 bg-brand-blue-light"
+              className="h-full w-10 rounded-l-none rounded-r border-0"
             >
               <Search aria-hidden="true" />
             </Button>
           </form>
           <Button
             type="button"
-            className="h-full rounded px-4 py-3 font-bold transition-transform hover:-translate-y-0.5"
+            variant="secondary"
+            onClick={onClickGetAdvice}
+            className="h-full rounded px-4 py-3 font-bold bg-brand-blue-light transition-transform hover:-translate-y-0.5"
           >
-            Get help
+            Get advice
           </Button>
         </div>
       </div>

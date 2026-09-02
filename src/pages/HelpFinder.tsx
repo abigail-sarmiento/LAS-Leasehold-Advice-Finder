@@ -7,14 +7,13 @@ import {
   InputGroupTextarea,
 } from "@/components/ui/input-group";
 import { Spinner } from "@/components/ui/spinner";
-import SituationCard from "../components/SituationCard";
 import { ArrowRight } from "lucide-react";
-import { situationItems } from "../data/situations";
 import type { Category } from "../types/categories";
 import { classifySituation } from "../services/helpFinderClassifier";
 import { useState } from "react";
+import ChooseSituation from "../components/ChooseSituation";
 
-type SituationInputMethod = "choose-situation" | "describe-situation";
+export type SituationInputMethod = "choose-situation" | "describe-situation";
 
 export type HelpFinderState = {
   inputMethod: SituationInputMethod;
@@ -46,7 +45,7 @@ function HelpFinder({ value, onChange, onContinue }: HelpFinderProps) {
     });
   };
 
-  const handleContinue = async () => {
+  const handleContinueClick = async () => {
     if (inputMethod === "describe-situation") {
       setIsClassifying(true);
 
@@ -88,23 +87,11 @@ function HelpFinder({ value, onChange, onContinue }: HelpFinderProps) {
             className="flex cursor-pointer items-start gap-4 rounded-lg border p-5"
           >
             <RadioGroupItem value="choose-situation" id="choose-situation" />
-            <div>
-              <p className="font-medium">Choose a common situation</p>
-              <p className="text-sm text-muted-foreground">
-                Select from one of the options below.
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-5">
-                {inputMethod === "choose-situation" &&
-                  situationItems.map((situation) => (
-                    <SituationCard
-                      key={situation.id}
-                      situation={situation}
-                      selected={selectedSituation === situation.id}
-                      onSelect={() => handleSituationSelect(situation.id)}
-                    />
-                  ))}
-              </div>
-            </div>
+            <ChooseSituation
+              inputMethod={inputMethod}
+              selectedSituation={selectedSituation}
+              onSelectSituation={handleSituationSelect}
+            />
           </Label>
           <Label
             htmlFor="describe-situation"
@@ -149,7 +136,7 @@ function HelpFinder({ value, onChange, onContinue }: HelpFinderProps) {
             (inputMethod === "describe-situation" && !situationInput.trim()) ||
             (inputMethod === "describe-situation" && isClassifying)
           }
-          onClick={handleContinue}
+          onClick={handleContinueClick}
           className="h-11 px-6 gap-2"
         >
           Continue

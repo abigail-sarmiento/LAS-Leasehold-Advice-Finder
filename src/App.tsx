@@ -20,7 +20,11 @@ function App() {
     initialHelpFinderState,
   );
 
-  const handleContinue = (category: Category) => {
+  const handleGetAdviceClick = () => {
+    setCurrentPage("help-finder");
+  };
+
+  const handleContinueClick = (category: Category) => {
     setQuestionCategory(category);
     setCurrentPage("guided-questions");
   };
@@ -28,17 +32,17 @@ function App() {
   return (
     <div className="min-h-screen bg-brand-background">
       <header className="sticky top-0 z-20 bg-brand-blue">
-        <Header />
+        <Header onClickGetAdvice={handleGetAdviceClick} />
       </header>
       <main>
         {currentPage === "home" && (
-          <Home onClickGetStarted={() => setCurrentPage("help-finder")} />
+          <Home onClickGetAdvice={handleGetAdviceClick} />
         )}
         {currentPage === "help-finder" && (
           <HelpFinder
             value={helpFinderState}
             onChange={setHelpFinderState}
-            onContinue={handleContinue}
+            onContinue={handleContinueClick}
           />
         )}
         {currentPage === "guided-questions" && (
