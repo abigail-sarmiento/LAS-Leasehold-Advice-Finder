@@ -3,9 +3,17 @@ import GuidanceCard from "../components/GuidanceCard";
 import FeedbackForm from "../components/FeedbackForm";
 import ContactCard from "../components/ContactCard";
 import { guidanceResources } from "../data/guidanceResources";
+import type { Category } from "../types/categories";
 
-function Results() {
-  const featuredResources = guidanceResources.slice(0, 3);
+type ResultsProps = {
+  category: Category | null;
+};
+
+function Results({ category }: ResultsProps) {
+  const featuredResources = guidanceResources
+    .filter((resource) => resource.category === category)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 3);
 
   return (
     <section>

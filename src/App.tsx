@@ -52,7 +52,7 @@ function App() {
             onBack={() => setCurrentPage("help-finder")}
           />
         )}
-        {currentPage === "results" && <Results />}
+        {currentPage === "results" && <Results category={questionCategory} />}
       </main>
     </div>
   );

@@ -161,19 +161,19 @@ function HeaderNavMenu() {
       className="flex min-h-14 justify-start"
       align="start"
     >
-      <NavigationMenuList className="flex-wrap justify-start gap-4 py-2 text-white">
+      <NavigationMenuList className="flex-wrap justify-start gap-1 py-2 text-white sm:gap-2">
         {navItems.map((item) => (
           <NavigationMenuItem key={item.label}>
-            <NavigationMenuTrigger className="rounded-none bg-transparent px-0 py-2 text-xs font-bold uppercase tracking-wide text-white/90 transition-colors hover:text-sky-200 hover:bg-transparent focus:bg-transparent data-[state=open]:text-sky-200">
+            <NavigationMenuTrigger className="rounded-lg bg-transparent px-2.5 py-1.5 text-sm font-medium tracking-normal text-white/90 transition-colors hover:bg-[#041f35] hover:text-brand-blue-deep focus:bg-[#041f35] focus:text-brand-blue-deep data-[state=open]:bg-[#041f35] data-[state=open]:text-brand-blue-deep">
               {item.label}
             </NavigationMenuTrigger>
-            <NavigationMenuContent className="min-w-[18rem] bg-white p-2 text-slate-900 shadow-lg ring-1 ring-slate-200">
+            <NavigationMenuContent className="min-w-[18rem] bg-white p-2 text-slate-900 shadow-lg ring-1 ring-foreground/10">
               <ul className="grid gap-1">
                 {item.items.map((subItem) => (
                   <li key={subItem.label}>
                     <NavigationMenuLink
                       href={subItem.href}
-                      className="block rounded-md px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:bg-slate-100"
+                      className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:bg-slate-100"
                     >
                       {subItem.label}
                     </NavigationMenuLink>
@@ -184,7 +184,7 @@ function HeaderNavMenu() {
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-1 block rounded-md border-t border-slate-200 px-3 pt-2 text-sm font-semibold text-brand-blue transition-colors hover:bg-slate-100"
+                    className="mt-1 block rounded-lg border-t border-slate-200 px-3 pt-2 text-sm font-semibold text-brand-blue transition-colors hover:bg-slate-100"
                   >
                     View all {item.label.toLowerCase()}
                   </NavigationMenuLink>

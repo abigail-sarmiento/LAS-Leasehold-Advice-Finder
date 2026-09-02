@@ -84,7 +84,7 @@ function HelpFinder({ value, onChange, onContinue }: HelpFinderProps) {
         >
           <Label
             htmlFor="choose-situation"
-            className="flex cursor-pointer items-start gap-4 rounded-lg border p-5"
+            className="flex cursor-pointer items-start gap-4 p-5 rounded-xl border border-slate-200 bg-white/70 shadow-sm transition-all duration-200 hover:shadow-md"
           >
             <RadioGroupItem value="choose-situation" id="choose-situation" />
             <ChooseSituation
@@ -95,7 +95,7 @@ function HelpFinder({ value, onChange, onContinue }: HelpFinderProps) {
           </Label>
           <Label
             htmlFor="describe-situation"
-            className="flex cursor-pointer items-start gap-4 rounded-lg border p-5"
+            className="flex cursor-pointer items-start gap-4 p-5 rounded-xl border border-slate-200 bg-white/70 shadow-sm transition-all duration-200 hover:shadow-md"
           >
             <RadioGroupItem
               value="describe-situation"
