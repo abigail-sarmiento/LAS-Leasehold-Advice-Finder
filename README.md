@@ -38,8 +38,8 @@ Below is a breakdown of tasks that can be created into tickets in a project incl
 
 ### Prerequisites
 
-- Node.js and npm installed locally
-- A Gemini API key, required for free-text situation classification
+- Node.js and npm
+- A Gemini API key
 
 ### Installation
 
@@ -80,16 +80,16 @@ npm run test        # Run Vitest in watch mode
 - Guided advice journey based on Leasehold Advisory Service information
 - Choice of predefined leasehold situations covering essentials, costs, lease extensions, buying and selling, building management, disputes and shared ownership
 - Free-text situation classification using Gemini AI
-- Category-specific questionnaire
-- Curated results and resources page
+- Situation-specific questionnaire
+- Results and resources page
 - Feedback and contact sections on the results page
 
 ## 🛠️ Future Improvements
 
 - Replace dummy data with real data sourced from the LAS
-- Add clearer loading, validation and error states for failed AI classification requests and forms
-- Replace placeholder results-page copy with tailored explanations and next step recommendations based on the user's answers that uses LLM to gather information from LAS sources
-- Use the answers from the guided questions to make resource recommendations more specific than the selected category alone
+- Add clearer loading, validation and error states for API requests and forms
+- Replace placeholder results-page copy with tailored instructions based on the user's answers that uses LLM to gather information from LAS sources
+- Use the answers from the guided questions to make resource recommendations more specific
 - Add the optional ability for user's to input personal details (e.g. addresses, leasehold details) that can be used to provide additional context
 - Implement a dedicated contact form so that user's may directly contact an agent who can help them resolve their issue
 - Implement a backend service/database where LAS information can be stored and accessed
