@@ -14,7 +14,7 @@ function Home() {
           <Button
             type="button"
             size="lg"
-            className="w-fit rounded px-6 py-6 text-xl font-bold"
+            className="w-fit px-6 py-6 rounded text-xl font-bold"
           >
             Get started
           </Button>

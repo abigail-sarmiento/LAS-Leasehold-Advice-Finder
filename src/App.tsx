@@ -6,8 +6,9 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import HelpFinder from "./pages/HelpFinder";
 import GuidedQuestions from "./pages/GuidedQuestions";
+import Results from "./pages/Results";
 
-type Page = "HOME" | "HELP_FINDER" | "GUIDED_QUESTIONS";
+type Page = "HOME" | "HELP_FINDER" | "GUIDED_QUESTIONS" | "RESULTS";
 
 const navItems = [
   "Leasehold essentials",
@@ -19,7 +20,7 @@ const navItems = [
 ];
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>("GUIDED_QUESTIONS");
+  const [currentPage] = useState<Page>("RESULTS");
 
   return (
     <div className="min-h-screen bg-brand-background">
@@ -85,6 +86,7 @@ function App() {
         {currentPage === "HOME" && <Home />}
         {currentPage === "HELP_FINDER" && <HelpFinder />}
         {currentPage === "GUIDED_QUESTIONS" && <GuidedQuestions />}
+        {currentPage === "RESULTS" && <Results />}
       </main>
     </div>
   );
