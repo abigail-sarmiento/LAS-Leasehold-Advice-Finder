@@ -3,7 +3,7 @@
 **Name:** Abigail Sarmiento  
 **Date:** 2 September 2026
 
-**Live demo:** [Leasehold Advisory Service](https://leasehold-advisory-service-take-hom.vercel.app/)
+**Live demo:** [Leasehold Advisory Service Advice Finder](https://leasehold-advisory-service-advice-finder.vercel.app/))
 
 ## ❓ Problem Statement
 
