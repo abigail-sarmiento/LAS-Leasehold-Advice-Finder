@@ -15,7 +15,7 @@ function ChooseSituation({
 }: ChooseSituationProps) {
   return (
     <div>
-      <p className="text-md">Choose a common situation</p>
+      <h2 className="text-md">Choose a common situation</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         Select from one of the options below.
       </p>

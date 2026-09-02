@@ -36,7 +36,7 @@ function SituationCard({ situation, selected, onSelect }: SituationCardProps) {
         >
           <Icon />
         </div>
-        <h3 className="block text-sm font-medium leading-tight text-foreground transition-colors hover:text-brand-blue">
+        <h3 className="block text-sm font-medium leading-tight text-foreground">
           {situation.title}
         </h3>
         <p className="text-muted-foreground text-xs leading-relaxed">

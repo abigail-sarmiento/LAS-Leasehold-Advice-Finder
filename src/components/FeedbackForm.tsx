@@ -70,6 +70,8 @@ function FeedbackForm() {
               </span>
               <Textarea
                 value={improvementFeedback}
+                placeholder="Your feedback"
+                aria-label="Your feedback"
                 onChange={(event) => setImprovementFeedback(event.target.value)}
               />
             </div>
@@ -80,7 +82,7 @@ function FeedbackForm() {
                 if (!helpfulResponse) return;
                 setIsSubmitted(true);
               }}
-              className="w-fit px-6 py-6 rounded rounded-lg bg-brand-blue-light disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-fit px-6 py-6 disabled:cursor-not-allowed disabled:opacity-50"
             >
               Submit
             </Button>

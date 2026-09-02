@@ -102,7 +102,7 @@ function HelpFinder({ value, onChange, onContinue }: HelpFinderProps) {
               id="describe-situation"
             />
             <div className="w-full">
-              <p className="font-medium">Describe my situation</p>
+              <h2 className="font-medium">Describe my situation</h2>
               <p className="text-sm text-muted-foreground">
                 Tell us what's happening in your own words.
               </p>

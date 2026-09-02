@@ -45,7 +45,7 @@ function Header({ onClickGetAdvice }: HeaderProps) {
             type="button"
             variant="secondary"
             onClick={onClickGetAdvice}
-            className="h-full rounded px-4 py-3 font-bold bg-brand-blue-light transition-transform hover:-translate-y-0.5"
+            className="h-full  px-4 py-3 rounded rounded-lg bg-brand-blue-light transition-transform hover:-translate-y-0.5"
           >
             Get advice
           </Button>

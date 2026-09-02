@@ -39,17 +39,15 @@ function GuidanceCard({
         <CardDescription className="mt-2">{description}</CardDescription>
       </CardContent>
       <CardFooter className="mt-auto">
-        <Button variant="link" className="h-auto p-0">
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1"
-          >
-            View more
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </Button>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1 h-auto p-0 hover:underline"
+        >
+          View more
+          <ArrowRight className="h-4 w-4" />
+        </a>
       </CardFooter>
     </Card>
   );
