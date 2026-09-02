@@ -1,85 +1,44 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import SituationCard from "../components/SituationCard";
-import {
-  ArrowRight,
-  Banknote,
-  Building,
-  CalendarRange,
-  Gavel,
-  House,
-  ShoppingBasket,
-  UsersRound,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { situationItems } from "../data/situations";
+import type { Category } from "../types/categories";
 
-const situationItems = [
-  {
-    id: "building-management",
-    title: "Building management",
-    description:
-      "How buildings are managed, including right to manage, repairs and fire safety",
-    icon: Building,
-  },
-  {
-    id: "buying-and-selling",
-    title: "Buying and selling",
-    description:
-      "The process for buying or selling a leasehold property or buying the freehold",
-    icon: ShoppingBasket,
-  },
-  {
-    id: "costs-and-charges",
-    title: "Costs and charges",
-    description:
-      "Costs you may need to pay as a leaseholder, including service charges and ground rent",
-    icon: Banknote,
-  },
-  {
-    id: "disputes",
-    title: "Disputes",
-    description:
-      "Dealing with leasehold disputes including enforcing your rights and applying to the tribunal",
-    icon: Gavel,
-  },
-  {
-    id: "lease-extension",
-    title: "Lease extension",
-    description:
-      "How to extend your lease, including the different routes and valuation",
-    icon: CalendarRange,
-  },
-  {
-    id: "leasehold-essentials",
-    title: "Leasehold essentials",
-    description:
-      "Understanding leasehold, your rights and responsibilities, and leasehold reform",
-    icon: House,
-  },
-  {
-    id: "shared-ownership",
-    title: "Shared ownership",
-    description:
-      "Advice if you’re thinking of buying a shared ownership property or already own one",
-    icon: UsersRound,
-  },
-];
+type SituationInputMethod = "choose-situation" | "describe-situation";
 
-function HelpFinder() {
-  const [inputMethod, setInputMethod] = useState<
-    "choose-situation" | "describe-situation"
-  >("choose-situation");
+export type HelpFinderState = {
+  inputMethod: SituationInputMethod;
+  selectedSituation: string | null;
+  situationInput: string;
+};
 
-  const [selectedSituation, setSelectedSituation] = useState<
-    string | undefined
-  >(undefined);
-  const [situationInput, setSituationInput] = useState<string>("");
+export const initialHelpFinderState: HelpFinderState = {
+  inputMethod: "choose-situation",
+  selectedSituation: null,
+  situationInput: "",
+};
+
+type HelpFinderProps = {
+  value: HelpFinderState;
+  onChange: (value: HelpFinderState) => void;
+  onContinue: (category: Category) => void;
+};
+
+function HelpFinder({ value, onChange, onContinue }: HelpFinderProps) {
+  const { inputMethod, selectedSituation, situationInput } = value;
 
   const handleSituationSelect = (id: string) => {
-    setSelectedSituation((current) => (current === id ? undefined : id));
+    onChange({
+      ...value,
+      selectedSituation: selectedSituation === id ? null : id,
+    });
   };
+
+  const selectedCategory: Category =
+    (selectedSituation as Category) || "leaseholdEssentials";
 
   return (
     <section>
@@ -89,7 +48,14 @@ function HelpFinder() {
         </h1>
         <RadioGroup
           value={inputMethod}
-          onValueChange={setInputMethod}
+          onValueChange={(nextMethod) =>
+            onChange({
+              ...value,
+              inputMethod: nextMethod as
+                | "choose-situation"
+                | "describe-situation",
+            })
+          }
           className="gap-4"
         >
           <Label
@@ -133,7 +99,12 @@ function HelpFinder() {
                   <Textarea
                     placeholder="What is your situation?"
                     value={situationInput}
-                    onChange={(event) => setSituationInput(event.target.value)}
+                    onChange={(event) =>
+                      onChange({
+                        ...value,
+                        situationInput: event.target.value,
+                      })
+                    }
                     className="w-full min-w-0 mt-5 rounded rounded-2xl font-normal"
                   />
                 )}
@@ -146,6 +117,7 @@ function HelpFinder() {
             (inputMethod === "choose-situation" && !selectedSituation) ||
             (inputMethod === "describe-situation" && !situationInput.trim())
           }
+          onClick={() => onContinue(selectedCategory)}
           className="h-11 px-6 gap-2"
         >
           Continue

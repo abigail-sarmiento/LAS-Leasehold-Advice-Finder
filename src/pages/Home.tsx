@@ -2,7 +2,11 @@ import { Button } from "@/components/ui/button";
 import { BookOpenText, Form, MessageCircleMore } from "lucide-react";
 import HowItWorksStep from "../components/HowItWorksStep";
 
-function Home() {
+type HomeProps = {
+  onClickGetStarted: () => void;
+};
+
+function Home({ onClickGetStarted }: HomeProps) {
   return (
     <section>
       <div className="py-12 md:py-14 bg-brand-blue-light">
@@ -15,6 +19,7 @@ function Home() {
             type="button"
             size="lg"
             className="w-fit px-6 py-6 rounded text-xl font-bold"
+            onClick={onClickGetStarted}
           >
             Get started
           </Button>

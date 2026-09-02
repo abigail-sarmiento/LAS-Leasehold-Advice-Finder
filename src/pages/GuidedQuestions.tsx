@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Questionnaire,
   QuestionnaireActions,
@@ -15,17 +16,36 @@ import {
   QuestionnaireTitle,
 } from "@/components/ui/questionnaire";
 import questionsByCategory from "../data/questions";
+import type { Category } from "../types/categories";
+import { ChevronLeft } from "lucide-react";
 
-function GuidedQuestions() {
-  const handleQuestionnaireSubmit = () => {};
+type GuidedQuestionsProps = {
+  category: Category | null;
+  onSubmit: () => void;
+  onBack: () => void;
+};
+
+function GuidedQuestions({ category, onSubmit, onBack }: GuidedQuestionsProps) {
+  const items = category ? questionsByCategory[category] : [];
+
+  const handleQuestionnaireSubmit = () => {
+    onSubmit();
+  };
 
   return (
     <section>
       <div className="page-width py-12 md:py-14 gap-12">
-        <Questionnaire
-          items={questionsByCategory.buildingManagement}
-          onSubmit={handleQuestionnaireSubmit}
-        >
+        <div className="mb-6 flex justify-start">
+          <Button
+            variant="outline"
+            onClick={onBack}
+            className="flex items-center justify-center gap-2"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Back
+          </Button>
+        </div>
+        <Questionnaire items={items} onSubmit={handleQuestionnaireSubmit}>
           <QuestionnaireProgress
             className="w-full"
             render={(props, state) => (
@@ -49,7 +69,7 @@ function GuidedQuestions() {
             )}
           />
 
-          {questionsByCategory.buildingManagement.map((question) => (
+          {items.map((question) => (
             <QuestionnaireItem
               key={question.name}
               name={question.name}

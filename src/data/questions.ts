@@ -1,3 +1,5 @@
+import type { Category } from "../types/categories";
+
 export type QuestionnaireChoice = {
   value: string;
   label: string;
@@ -18,7 +20,7 @@ export type QuestionItem = {
   input?: QuestionnaireInput;
 };
 
-export const questionsByCategory: Record<string, QuestionItem[]> = {
+export const questionsByCategory: Record<Category, QuestionItem[]> = {
   buildingManagement: [
     {
       name: "building_issue_type",
@@ -251,6 +253,5 @@ export const questionsByCategory: Record<string, QuestionItem[]> = {
 };
 
 export type QuestionsByCategory = typeof questionsByCategory;
-export type QuestionCategory = keyof QuestionsByCategory;
 
 export default questionsByCategory;
