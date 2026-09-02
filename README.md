@@ -3,7 +3,7 @@
 **Name:** Abigail Sarmiento  
 **Date:** 2 September 2026
 
-**Live demo:** [Leasehold Advisory Service Advice Finder](https://leasehold-advisory-service-advice-finder.vercel.app/)
+### 💻 **Live demo:** [Leasehold Advice Finder](https://leasehold-advisory-service-advice-finder.vercel.app/)
 
 ## ❓ Problem Statement
 
@@ -34,7 +34,7 @@ Below is a breakdown of tasks that can be created into tickets in a project incl
 | 7      | Add testing                               | Key user flows and features are sufficiently covered by unit and integration testing                                    |
 | 8      | Review accessibility, privacy performance | An audit on accessibility, privacy and performance is conducted using relevant tools, and any remediations are made     |
 
-## 💻 Local Setup
+## ⚙️ Local Setup
 
 ### Prerequisites
 
@@ -84,7 +84,7 @@ npm run test        # Run Vitest in watch mode
 - Results and resources page
 - Feedback and contact sections on the results page
 
-## 🛠️ Future Improvements
+## 🚀 Future Improvements
 
 - Replace dummy data with real data sourced from the LAS
 - Add clearer loading, validation and error states for API requests and forms
@@ -139,7 +139,7 @@ Below are the instances where AI was used to develop this prototype:
 
 - **Data scraping and creation:** AI was used to fetch data from the main Leasehold Advisory Service and create dummy data, including questions for the Guided Advice form, and guidance resources card information. For the latter, tt struggled with being able to differentiate between the 'Advice guides' and 'Topics' (which had further guides within), so I needed to carefully review it's outputs at this step.
 - **Creating copy text:** I took inspiration from AI on simple and accessible copy text. It was mostly helpful in this case.
-- Help with setting up Gemini AI with Vercel:**** I consulted AI to suggest an approach where I can use an LLM to execute a query that can be used to triage a user's input into one of the pre-defined categories. This includes the code for set-up and steps to connect it to a Vercel environment which worked well.
+- **Assistance with setting up Gemini AI with Vercel:** I consulted AI to suggest an approach where I can use an LLM to execute a query that can be used to triage a user's input into one of the pre-defined categories. This includes the code for set-up and steps to connect it to a Vercel environment which worked well.
 - **Styling updates:** AI helped to bring design suggestions and styling consistency throughout the components of the application. Some of these were not accurate, in which I stepped into the code and made my own changes.
 
 ## ✍️ Self Code Review
@@ -149,9 +149,9 @@ This prototype demonstrates how a user could be guided towards the right informa
 It uses a modern frontend stack including React, TypeScript, TailwindCSS, shadcn/ui and the Gemini API, with a structure that I believe an engineering team could build upon and maintain. 
 
 Overall, it is a solid first iteration. However, there are some changes I would request before merging:
-- Features (Results): The categorisation is useful, but the results could make better use of the context gathered from the user to provide a more relevant and actionable next step. An LLM backed by curated LAS content could be explored here.
-- UI: Establish a consistent design system for colours, typography, spacing and interactive states
-- Testing: Test coverage should be expanded to include component, integration, API and E2E tests, alongside performance, SEO and cross-browser testing. 
-- Accessibility: Further manual testing is needed, particularly for keyboard navigation, focus order and visibility, browser zoom, responsive behaviour and screen reader compatibility.
-- Privacy and security handling: Consider what authentication and storage options will be required in the future, as well as validating and sanitising API inputs/responses.
-- Code quality: I would do a final review of naming, code structure and loading/error handling.
+- **Features (Results): **The categorisation is useful, but the results could make better use of the context gathered from the user to provide a more relevant and actionable next step. An LLM backed by curated LAS content could be explored here.
+- **UI: **Establish a consistent design system for colours, typography, spacing and interactive states
+-** Testing:** Test coverage should be expanded to include component, integration, API and E2E tests, alongside performance, SEO and cross-browser testing. 
+- **Accessibility: **Further manual testing is needed, particularly for keyboard navigation, focus order and visibility, browser zoom, responsive behaviour and screen reader compatibility.
+- **Privacy and security handling:** Consider what authentication and storage options will be required in the future, as well as validating and sanitising API inputs/responses.
+- **Code quality:** I would do a final review of naming, code structure and loading/error handling.
